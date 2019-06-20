@@ -54,7 +54,9 @@ public class Painter : MonoBehaviour {
     {
         Vector2 normalizeTouchedPos = new Vector2(touchedPos.x / mrWidth, touchedPos.y / mrHeight);
         //Debug.LogFormat("touch pos: ({0}, {1})", touchedPos.x, touchedPos.y);
-        Debug.LogFormat("normalize touch pos: ({0}, {1})", normalizeTouchedPos.x, normalizeTouchedPos.y);
-        return new Vector3(normalizeTouchedPos.x*unityCanvasScale.x, normalizeTouchedPos.y*unityCanvasScale.y, 0) + unityCenter;
+        //Debug.LogFormat("normalize touch pos: ({0}, {1})", normalizeTouchedPos.x, normalizeTouchedPos.y);
+        Vector3 localPos = new Vector3(normalizeTouchedPos.x * unityCanvasScale.x, normalizeTouchedPos.y * -unityCanvasScale.y, 0);
+        //Debug.LogFormat("loca pos: ({0}, {1}, {2})", localPos.x, localPos.y, localPos.z);
+        return inkCanvasCenter.TransformPoint(localPos.x, localPos.y, localPos.z);
     }
 }
