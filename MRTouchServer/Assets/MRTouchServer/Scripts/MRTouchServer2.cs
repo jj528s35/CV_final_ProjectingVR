@@ -18,9 +18,13 @@ public class MRTouchServer2 : MonoBehaviour {
     };
 
     [Header("fingertips pos")]
-    private int fingerNumber = 10;
+    public int fingerNumber = 10;
     public List<Vector2> fingertips = new List<Vector2>();
     public List<bool> touchedState = new List<bool>();
+
+    [Header("Debug")]
+    public string debugFingertipsPos;
+    public string debugTouchedState;
 
     private TcpListener tcpListener;
     private Thread tcpListenerThread;
@@ -66,12 +70,22 @@ public class MRTouchServer2 : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ParseData("1 10 134 97 108 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 ");
+            ParseData(debugFingertipsPos);
+            debugFingertipsPos = "";
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ParseData("2 0 1 0 0 0 0 0 0 0 0 ");
+            ParseData(debugTouchedState);
+            debugTouchedState = "";
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            ParseData(debugFingertipsPos);
+            ParseData(debugTouchedState);
+            debugFingertipsPos = "";
+            debugTouchedState = "";
         }
 	}
 
@@ -139,7 +153,6 @@ public class MRTouchServer2 : MonoBehaviour {
         int dataType = int.Parse(values[0]);
         if(dataType == (int)ReceiveType.fingertipsPos)
         {
-            //Debug.LogFormat("reveice fingertips positions, data length: {0}", values.Length);
             if (values.Length-2 == (fingerNumber * 2))
             {
                 for (int i = 0; i < fingerNumber; i++)
@@ -153,6 +166,11 @@ public class MRTouchServer2 : MonoBehaviour {
                     tip.y = int.Parse(values[2*i + 1 + 1]);
                     fingertips[i] = tip;
                 }
+            }
+            else
+            {
+                Debug.LogFormat("reveice fingertips positions, data length: {0}", values.Length);
+                Debug.LogFormat("fingertips pos format is wrong: {0}", data);
             }
         }else if(dataType == (int) ReceiveType.touchedState)
         {
@@ -171,6 +189,11 @@ public class MRTouchServer2 : MonoBehaviour {
                     }
                     
                 }
+            }
+            else
+            {
+                Debug.LogFormat("reveice touch positions, data length: {0}", values.Length);
+                Debug.LogFormat("touch state format is wrong: {0}", data);
             }
         }
     }
