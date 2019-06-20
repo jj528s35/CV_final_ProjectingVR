@@ -1,4 +1,4 @@
-import socket
+import socket, sys
 
 port = 7777
 sock = None
@@ -26,17 +26,18 @@ def close_socket():
         sock.close()
     print('close the socket successful')
 
-def send(data):
+def send(string):
     '''
         send the data with TCP sock.
+        data format: "data_type data[0] data[1] ..."
     '''
     global sock
     if sock is None:
         create_socket()
     else:
-        sock.sendall(data.encode())
+        sock.sendall(string.encode())
 
 if(__name__ == '__main__'):
     create_socket()
-    send('hello world')
+    send('0 hello world')
     close_socket()

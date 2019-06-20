@@ -72,6 +72,7 @@ def hand_tracking(new_center, new_tips, threed_points, draw_image=None):
     '''
     global hands_center, fingertips
     
+    # turple to array
     new_center = np.array([[new_center[0], new_center[1]]])
     
 #     print('-------------Hand Tracking---------------')
