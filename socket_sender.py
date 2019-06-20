@@ -24,6 +24,7 @@ def close_socket():
     global sock
     if (sock is not None):
         sock.close()
+        sock = None
     print('close the socket successful')
 
 def send(string):
