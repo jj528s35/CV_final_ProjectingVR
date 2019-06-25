@@ -497,7 +497,7 @@ MonoBehaviour:
       type: 3}
     brushHeightTexture: {fileID: 2800000, guid: 5d0b68db26f9c604aadd12c4049caee7,
       type: 3}
-    brushScale: 0.1
+    brushScale: 0.05
     rotateAngle: 0
     brushNormalBlend: 0.1
     brushHeightBlend: 0
@@ -566,12 +566,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   brush:
-    brushTexture: {fileID: 2800000, guid: f198c1c995ef08c478009b65a48af828, type: 3}
+    brushTexture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
     brushNormalTexture: {fileID: 2800000, guid: 945b831b22eb06945bf77e00f16ff51a,
       type: 3}
     brushHeightTexture: {fileID: 2800000, guid: 5d0b68db26f9c604aadd12c4049caee7,
       type: 3}
-    brushScale: 0.05
+    brushScale: 0.03
     rotateAngle: 0
     brushNormalBlend: 0
     brushHeightBlend: 0

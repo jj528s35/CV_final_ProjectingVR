@@ -133,7 +133,7 @@ def get_edge_map(grayImage,depthImage):
     if depth between the pixel and its nearby pixels > near_depth_threshold, then labeled it
     """
     s_time = time.time()
-    near_depth_threshold = 0.05 #0.05
+    near_depth_threshold = 0.005 #0.05
 #     print(np.max(depthImage))
     Threshold_based_edge = np.zeros((depthImage.shape[0],depthImage.shape[1]))
     
@@ -206,7 +206,7 @@ def get_high_region(depthImage):
     """
     h, w = depthImage.shape[:2]
     high_region_mask = np.ones((h+2,w+2), np.uint8)
-    high_region_mask[1:h+1,1:w+1] = depthImage < 0.04 # > 0.04 False == 0, Flood fill will fill pixels with 0
+    high_region_mask[1:h+1,1:w+1] = depthImage < 0.005 # > 0.04 False == 0, Flood fill will fill pixels with 0
     resultImg = np.zeros((h,w), np.uint8)
     
     maxArea = 0

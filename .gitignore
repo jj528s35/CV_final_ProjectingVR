@@ -63,6 +63,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
-.ipynb_checkpoints/
+/.ipynb_checkpoints/
 .__pycache__/
-45fps.rrf
+*.rrf
